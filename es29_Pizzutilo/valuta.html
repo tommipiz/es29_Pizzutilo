@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Cambio Valuta</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f0; }
+        select, input, button { margin: 10px; }
+        img { width: 50px; }
+    </style>
+</head>
+<body>
+
+<h1>Cambio Valuta</h1>
+<form action="cambio.php" method="get">
+    <input type="text" name="amount" placeholder="Importo in Euro" required>
+    <select name="currency" id="currencySelect">
+        <option value="dollaro">Dollaro</option>
+        <option value="yen">Yen</option>
+        <option value="franco">Franchi Svizzeri</option>
+        <option value="sterlina">Sterline</option>
+    </select>
+    <button type="submit">Converti</button>
+</form>
+
+<img id="flagImage" src="https://www.worldometers.info/img/flags/it-flag.gif" alt="Bandiera Italia">
+
+<script>
+    const currencySelect = document.getElementById('currencySelect');
+    const flagImage = document.getElementById('flagImage');
+
+    const flags = {
+        dollaro: "https://www.worldometers.info/img/flags/us-flag.gif",
+        yen: "https://www.worldometers.info/img/flags/ja-flag.gif",
+        franco: "https://www.worldometers.info/img/flags/sz-flag.gif",
+        sterlina: "https://www.worldometers.info/img/flags/uk-flag.gif"
+    };
+
+    currencySelect.addEventListener('change', function() {
+        flagImage.src = flags[this.value];
+    });
+</script>
+
+</body>
+</html>
